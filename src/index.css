@@ -62,3 +62,25 @@ h1 {
   }
 
 }
+
+@media (max-width: 768px) {
+    .about {
+        flex-direction: column;
+        margin: 50px 20px;
+        gap: 5%;
+    }
+
+    .skills {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stack {
+        margin-top: 200px;
+        margin-bottom: 100px;
+    }
+
+    body {
+        min-width: 0;
+    }
+}
+
