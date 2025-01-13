@@ -1,0 +1,83 @@
+.hero {
+    margin-top: 170px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero h1 {
+    margin-bottom: 20px;
+}
+
+.hero p {
+    color: #888;
+    font-size: 1.5em;
+    margin-bottom: 30px;
+}
+
+.hero h2 {
+    margin-bottom: 40px;
+}
+
+.hero button {
+    padding: 10px 25px;
+    border-radius: 20px;
+    font-size: 1em;
+    transition: 0.3s;
+    margin-bottom: 200px;
+}
+
+.hero button:hover {
+    scale: 0.95;
+    background-color: transparent;
+    color: white;
+}
+
+.scroll-indicator {
+    margin-bottom: 200px;
+    color: #888;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+.menyapa {
+    display: flex;
+    justify-content: center;
+}
+
+.melambai {
+    animation: melambai 3s infinite;
+}
+
+
+@keyframes melambai {
+    0% {
+        rotate: 0deg;
+    }
+    20% {
+        rotate: -20deg;
+    }
+    40% {
+        rotate: 0deg;
+    }
+    60% {
+        rotate: -20deg;
+    }
+    80% {
+        rotate: 0deg;
+    }
+    100% {
+        rotate: 0deg;
+    }
+}

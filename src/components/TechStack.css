@@ -1,0 +1,46 @@
+.stack {
+    margin-top: 400px;
+    margin-bottom: 200px;
+}
+
+.skills {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.skill-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.skill-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.skill-item i {
+    font-size: 3em;
+    margin-bottom: 15px;
+    transition: 0.3s;
+    color: #fff;
+}
+
+.skill-item:hover i {
+    transform: scale(2);
+}
+
+.skill-item h3 {
+    margin-top: 5%;
+}
+
+.stack-title h1 {
+    color: white;
+    justify-self: center;
+    margin-bottom: 10%;
+    border-bottom: 4px solid white;
+    width: fit-content;
+}
