@@ -12,7 +12,7 @@
     border-radius: 100%; 
     border-top-left-radius: 10%;
 
-    border: 5px solid white; /* Opsional untuk memberi border dasar */
+    border: 5px solid white;
     box-shadow: 0 0 20px 5px rgba(255, 255, 255, 0.7),
                 0 0 40px 10px rgba(255, 255, 255, 0.5),
                 0 0 60px 15px rgba(255, 255, 255, 0.3);
@@ -52,4 +52,22 @@
 .about-content p {
     margin-bottom: 2%;
     color: #999;
+}
+
+@media (max-width: 768px) {
+    .about {
+        flex-direction: column;
+    }
+    .about img {
+        width: 50%;
+        margin-bottom: 4rem;
+    }
+    .about h1 {
+        font-size: 2rem;
+        justify-self: center;
+        margin-bottom: 2rem;
+    }
+    .about-content {
+        text-align: justify;
+    }
 }

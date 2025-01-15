@@ -31,7 +31,7 @@ export const Hero: React.FC<HeroProps> = ({ user }) => {
 
     return (
         <>
-            <section className='hero'>
+            <section className='hero' >
                 <div className="hero-content">
                     <div className='menyapa' data-aos="fade-up" data-aos-duration="2000">
                         <h2>Hello {user}, Welcome to My Website 👋</h2>
@@ -40,7 +40,7 @@ export const Hero: React.FC<HeroProps> = ({ user }) => {
                     <h1 className="gradient-text" data-aos-delay="1000" data-aos="fade-up" data-aos-duration="2000">I'm Faisal Amiruddin</h1>
                     <p data-aos-delay="1100" data-aos="fade-up" data-aos-duration="2000">Trying to Become a Full Stack Developer</p>
                     <button onClick={scrollToAbout} data-aos-delay="2000" data-aos="fade-up" data-aos-duration="2500">Explore My Portofolio</button>
-                    <br />
+                    <br  />
                     <i className='scroll-indicator fas fa-chevron-down'></i>
                 </div>
 

@@ -44,3 +44,21 @@
     border-bottom: 4px solid white;
     width: fit-content;
 }
+
+@media (max-width: 768px) {
+    .skill-item h3 {
+        font-size: 1em;
+    }
+    .skill-item i {
+        font-size: 2em;
+    }
+    .skills {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .stack-title h1 {
+        font-size: 2rem;
+    }
+    .stack {
+        margin-top: 200px;
+    }
+}

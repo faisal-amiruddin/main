@@ -81,3 +81,18 @@
         rotate: 0deg;
     }
 }
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 1.7rem;
+    }
+    .hero h2 {
+        font-size: 0.7rem;
+    }
+    .hero p {
+        font-size: 1rem;
+    }
+    .hero button {
+        font-size: 0.7rem;
+    }
+}
