@@ -64,10 +64,13 @@
     }
     .about h1 {
         font-size: 2rem;
-        justify-self: center;
         margin-bottom: 2rem;
     }
     .about-content {
         text-align: justify;
+    }
+    .about-content h1 {
+        justify-self: center;
+        align-self: center;
     }
 }
