@@ -14,7 +14,7 @@ a, button {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transform: transform 0.5s ease;
+    transition: transform 0.5s ease-in-out;
     z-index: 1;
 }
 
