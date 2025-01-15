@@ -1,6 +1,7 @@
 .stack {
     margin-top: 400px;
     margin-bottom: 200px;
+    padding: 0 300px;
 }
 
 .skills {
@@ -53,6 +54,7 @@
         font-size: 2em;
     }
     .skills {
+        padding: 0 50px;
         grid-template-columns: repeat(2, 1fr);
     }
     .stack-title h1 {
@@ -60,6 +62,7 @@
     }
     .stack {
         margin-top: 200px;
+        padding: 0;
     }
     .stack-title {
         display: flex;

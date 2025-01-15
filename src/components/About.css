@@ -1,5 +1,6 @@
 .about {
     display: flex;
+    padding: 0 200px;
     justify-content: center;
     align-items: center;
     margin-bottom: 200px;
@@ -57,6 +58,7 @@
 @media (max-width: 768px) {
     .about {
         flex-direction: column;
+        padding: 0 10px;
     }
     .about img {
         width: 70%;
