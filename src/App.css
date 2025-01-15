@@ -3,6 +3,11 @@
   text-align: center;
 }
 
+.input-show {
+  display: flex;
+  flex-direction: column;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

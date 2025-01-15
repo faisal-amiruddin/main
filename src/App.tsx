@@ -21,14 +21,14 @@ function App() {
 
   if (visible) {
       return (
-          <>
+          <section className='input-show'>
               <Input setUser={setUser} />
 
               <button
               className="btn"
               onClick={handleOnClick}
               >Submit</button>
-          </>
+          </section>
       )
   }
   return (
