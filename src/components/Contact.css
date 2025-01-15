@@ -82,9 +82,7 @@
 }
 
 .form-input button:hover {
-    border: 2px solid #fff;
-    background-color: transparent;
-    color: #fff;
+    scale: 0.9;
 }
 
 .success-message {
@@ -136,7 +134,6 @@
 
 .form-input button:disabled {
     cursor: not-allowed;
-    color: black;
 }
 
 @media (max-width: 768px) {
