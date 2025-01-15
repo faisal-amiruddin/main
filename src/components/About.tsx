@@ -14,7 +14,7 @@ export const About = () => {
             <div className='about-scroll'></div>
             <section className="about" >
                 <div data-aos="flip-right" data-aos-duration="2000">
-                    <img src="pp.jpg" alt="" />
+                    <img src="pp.jpg" alt="Me" />
                 </div>
                 <div className='about-content' >
                     <h1 data-aos="fade" data-aos-duration="3000">About Me</h1>
