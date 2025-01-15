@@ -1,4 +1,4 @@
-import { FormEvent, useEffect, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import './Contact.css';
  
 interface ContactProps {
@@ -9,30 +9,23 @@ export const Contact: React.FC<ContactProps> = ({ user }) => {
   const apiKey = import.meta.env.VITE_EMAIL_API_KEY;
   const [showSuccess, setShowSuccess] = useState(false);
   const [isSending, setIsSending] = useState(false);
-  const [triggerEffect, setTriggerEffect] = useState(false); 
   const [userInput, setUserInput] = useState(user);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setUserInput(event.target.value); // Memperbarui state 'user' dengan nilai yang dimasukkan
+    setUserInput(event.target.value);
   };
 
-  useEffect(() => {
-    if (triggerEffect) {
-      const timer = setTimeout(() => {
-        setShowSuccess(true);
-      }, 5000);
-
-      return () => clearTimeout(timer); 
-    }
-  }, [triggerEffect]);
+  const handleBack = () => {
+    setShowSuccess(false); // Diubah ke false
+  }
 
   const renderSuccess = () => {
-    
     return (
         <div className="success-message">
             <i className="fas fa-check-circle"></i>
             <p>Message sent successfully!</p>
-        </div>
+            <p style={{color: "#888", cursor: "pointer"}} onClick={handleBack}>Back</p>
+        </div> 
     )
   }
 
@@ -40,22 +33,27 @@ export const Contact: React.FC<ContactProps> = ({ user }) => {
     return (
         <>
             <input type="hidden" name="access_key" value={apiKey} />
-            <input type="text" placeholder="Your Name" name="name" required value={userInput} onChange={handleInputChange} />
+            <input 
+              type="text" 
+              placeholder="Your Name" 
+              name="name" 
+              required 
+              value={userInput} 
+              onChange={handleInputChange} 
+            />
             <input type="email" placeholder="Your Email" name="email" required />
             <textarea rows={5} placeholder="Your Message" name="message" required />
-            <button onClick={handleSuccess} data-aos="fade" data-aos-delay="2500" data-aos-duration="1000" type="submit" disabled={isSending}>
-            {isSending ? 'Sending...' : 'Send Message'}
+            <button 
+              data-aos="fade" 
+              data-aos-delay="2500" 
+              data-aos-duration="1000" 
+              type="submit" 
+              disabled={isSending}
+            >
+              {isSending ? 'Sending...' : 'Send Message'}
             </button>
         </>
     )
-  }
-  const handleSuccess = () => {
-    if (showSuccess) {
-        setTriggerEffect(true);
-        return renderSuccess;
-    } else {
-        return renderDefault;
-    }
   }
 
   const onSend = async (event: FormEvent<HTMLFormElement>) => {
@@ -81,9 +79,6 @@ export const Contact: React.FC<ContactProps> = ({ user }) => {
       if (res.success) {
         setShowSuccess(true);
         event.currentTarget.reset();
-        setTimeout(() => {
-          setShowSuccess(false);
-        }, 3000);
       }
     } catch (err) {
       console.error("Error:", err);
@@ -96,18 +91,26 @@ export const Contact: React.FC<ContactProps> = ({ user }) => {
     <>
         <div className='contact-scroll'></div>
         <section className="form">
-        <div className="form-content">
-            <h1 data-aos="fade" data-aos-duration="3000">Get In Touch</h1>
-            <p data-aos="fade-up" data-aos-duration="2000" >I'm always interested in hearing about new projects and opportunities.</p>
-            <div className="form-icon">
-            <a data-aos="fade-up" data-aos-delay="100" data-aos-duration="2000" href="#" target="_blank" rel="noreferrer"><i className="fab fa-github"></i></a>
-            <a data-aos="fade-up" data-aos-delay="200" data-aos-duration="2000" href="#" target="_blank" rel="noreferrer"><i className="fab fa-linkedin"></i></a>
-            <a data-aos="fade-up" data-aos-delay="300" data-aos-duration="2000" href="#" target="_blank" rel="noreferrer"><i className="fab fa-instagram"></i></a>
-            </div>
-        </div>
-        <form onSubmit={onSend} className="form-input" data-aos="fade-up" data-aos-delay="500" data-aos-duration="2000">
-            {showSuccess ? renderSuccess() : renderDefault()}
-        </form>
+          <div className="form-content">
+              <h1 data-aos="fade" data-aos-duration="3000">Get In Touch</h1>
+              <p data-aos="fade-up" data-aos-duration="2000">
+                I'm always interested in hearing about new projects and opportunities.
+              </p>
+              <div className="form-icon">
+                <a data-aos="fade-up" data-aos-delay="100" data-aos-duration="2000" href="#" target="_blank" rel="noreferrer">
+                  <i className="fab fa-github"></i>
+                </a>
+                <a data-aos="fade-up" data-aos-delay="200" data-aos-duration="2000" href="#" target="_blank" rel="noreferrer">
+                  <i className="fab fa-linkedin"></i>
+                </a>
+                <a data-aos="fade-up" data-aos-delay="300" data-aos-duration="2000" href="#" target="_blank" rel="noreferrer">
+                  <i className="fab fa-instagram"></i>
+                </a>
+              </div>
+          </div>
+          <form onSubmit={onSend} className="form-input" data-aos="fade-up" data-aos-delay="500" data-aos-duration="2000">
+              {showSuccess ? renderSuccess() : renderDefault()}
+          </form>
         </section>
     </>
   );
