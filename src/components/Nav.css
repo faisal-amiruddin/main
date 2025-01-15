@@ -41,14 +41,16 @@ a, button {
 }
 
 .menu-links a {
+    border: 2px solid transparent;
     font-weight: 500;
+    border-radius: 5px;
     color: #fff;
     padding: 8px 16px;
     text-align: center;
 }
 
 .menu-links a:hover {
-    color: #888;
+    border: 2px solid #fff;
     scale: 0.9;
 }
 

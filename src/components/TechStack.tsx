@@ -24,9 +24,7 @@ export const TechStack = () => {
 
     const handleShow = () => {
         if(!isShow) {
-            const showLess = document.querySelector(".load") as HTMLElement;
             setIsShow(true)
-  
         } else {
             setIsShow(false)
         }

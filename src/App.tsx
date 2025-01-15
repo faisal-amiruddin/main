@@ -6,6 +6,7 @@ import { About } from './components/About.tsx';
 import { TechStack } from './components/TechStack.tsx';
 import { Footer } from './components/Footer.tsx';
 import { Nav } from './components/Nav.tsx';
+import { Contact } from './components/Contact.tsx';
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
       <Hero user={user} />
       <About />
       <TechStack />
+      <Contact user={user} />
       <Footer />
     </>
   )
