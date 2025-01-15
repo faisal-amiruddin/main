@@ -57,6 +57,8 @@
     }
     .stack-title h1 {
         font-size: 2rem;
+        justify-self: center;
+        align-self: center;
     }
     .stack {
         margin-top: 200px;
