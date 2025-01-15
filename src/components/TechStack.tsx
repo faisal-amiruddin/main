@@ -24,7 +24,9 @@ export const TechStack = () => {
 
     const handleShow = () => {
         if(!isShow) {
+            const showLess = document.querySelector(".load") as HTMLElement;
             setIsShow(true)
+  
         } else {
             setIsShow(false)
         }
@@ -42,7 +44,7 @@ export const TechStack = () => {
                 <div className="skills">
                     {
                         currentShow.map((stack) => (
-                            <div className="skill-item" data-aos="fade-up" data-aos-delay="300" data-aos-duration="2000">
+                            <div className="skill-item" data-aos="fade" data-aos-delay="300" data-aos-duration="2000">
                                 <i className={stack.icon}></i>
                                 <h3>{stack.name}</h3>
                             </div>
@@ -51,7 +53,7 @@ export const TechStack = () => {
                 </div>
                 <div className='load' data-aos="fade-up" data-aos-delay="300" data-aos-duration="2000" onClick={handleShow}>
                     {
-                        isShow? (<p>Show Less</p>): (<p>Load More</p>)
+                        isShow? (<p>Show Less</p>): (<p>Show More</p>)
                     }
                     <i className='load-indicator fas fa-chevron-down'></i>
                 </div>
