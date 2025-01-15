@@ -31,6 +31,7 @@ export const Hero: React.FC<HeroProps> = ({ user }) => {
 
     return (
         <>
+            <div className='hero-scroll'></div>
             <section className='hero' >
                 <div className="hero-content">
                     <div className='menyapa' data-aos="fade-up" data-aos-duration="2000">

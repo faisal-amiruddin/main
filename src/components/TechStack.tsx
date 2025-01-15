@@ -3,6 +3,7 @@ import './TechStack.css'
 export const TechStack = () => {
     return (
         <>
+            <div className='tech-scroll'></div>
             <section className="stack">
                 <div className='stack-title'>
                     <h1 data-aos="fade" data-aos-duration="2000">Tech Stacks</h1>

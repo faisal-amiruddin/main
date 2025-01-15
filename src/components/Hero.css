@@ -1,5 +1,6 @@
 .hero {
-    margin-top: 170px;
+    behavior: smooth;
+    margin-top: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -84,15 +85,16 @@
 
 @media (max-width: 768px) {
     .hero h1 {
-        font-size: 2rem;
+        font-size: 1.7rem;
     }
     .hero h2 {
         font-size: 0.7rem;
     }
     .hero p {
-        font-size: 1rem;
+        font-size: 0.8rem;
     }
     .hero button {
         font-size: 1rem;
+        font-weight: 600;
     }
 }
