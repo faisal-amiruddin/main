@@ -1,23 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './Nav.css'
 
 export const Nav = () => {
-    const navBar = document.querySelector(".navbar") as HTMLElement;
-    let prevScrollPos = window.scrollY;
+    const [prevScrollPos, setPrevScrollPos] = useState(window.scrollY);
+    const [visible, setVisible] = useState(true);
 
-    window.addEventListener("scroll", function () {
-        const cursorScrollPos = this.window.scrollY;
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollPos = window.scrollY;
+            
+            setVisible(prevScrollPos > currentScrollPos || currentScrollPos < 10);
+            setPrevScrollPos(currentScrollPos);
+        };
 
-        if(navBar) {
-            if (cursorScrollPos > prevScrollPos) {
-                navBar.style.transform = 'translateY(-105%)';
-            } else {
-                navBar.style.transform = 'translateY(0%)';
-            }
-        }
+        window.addEventListener('scroll', handleScroll);
         
-        prevScrollPos = cursorScrollPos;
-    })
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, [prevScrollPos]);
 
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -51,7 +52,9 @@ export const Nav = () => {
 
     return (
         <>
-            <nav className="navbar">
+            <nav className="navbar" style={{ 
+                transform: visible ? 'translateY(0)' : 'translateY(-100%)'
+            }}>
                 <i className="fas fa-code icon"></i>
                 <div className="menu">
                     <div className={`menu-links ${isMenuOpen ? 'show' : ''}`}>
