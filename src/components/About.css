@@ -69,8 +69,8 @@
     .about-content p {
         text-align: justify;
     }
-    .about-content h1 {
-        justify-self: center;
-        align-self: center;
+    .about-title {
+        display: flex;
+        justify-content: center;
     }
 }
