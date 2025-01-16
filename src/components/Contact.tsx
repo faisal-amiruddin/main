@@ -12,20 +12,20 @@ export const Contact: React.FC<ContactProps> = ({ user }) => {
   const [showFailed, setShowFailed] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [userInput, setUserInput] = useState(user);
-  const [capVal, setCapVal] = useState(false);
+  const [capVal, setCapVal] = useState(true);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserInput(event.target.value);
   };
 
   const handeCaptchaValue = () => {
-    setCapVal(true);
+    setCapVal(false);
   }
 
   const handleBack = () => {
     setShowSuccess(false);
     setShowFailed(false);
-    setCapVal(false);
+    setCapVal(true);
   }
 
   const renderSuccess = () => {
