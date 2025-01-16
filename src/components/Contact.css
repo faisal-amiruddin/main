@@ -50,7 +50,7 @@
     flex-direction: column;
     background-color: rgba(255, 255, 255, 0.05);
     width: 56vh;
-    height: 50vh;
+    height: 60vh;
     padding: 30px;
 }
 
@@ -82,7 +82,7 @@
 }
 
 .form-input button:hover {
-    scale: 0.9;
+    /* scale: 0.9; */
 }
 
 .success-message {
@@ -134,6 +134,14 @@
 
 .form-input button:disabled {
     cursor: not-allowed;
+    color: rgb(255, 56, 56);
+    background-color: transparent;
+    border: 1px solid white;
+}
+
+.recaptcha {
+  transform: scale(0.75); 
+  transform-origin: 0 0; 
 }
 
 @media (max-width: 768px) {

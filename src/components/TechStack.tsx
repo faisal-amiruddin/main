@@ -3,21 +3,21 @@ import './TechStack.css'
 
 export const TechStack = () => {
     const stacksLess = [
-        {icon: 'devicon-html5-plain', name: 'HTMl'},
-        {icon: 'devicon-css3-plain', name: 'CSS'},
-        {icon: 'devicon-javascript-plain', name: 'JavaScript'},
-        {icon: 'devicon-typescript-plain', name: 'TypeScript'},
-        {icon: 'devicon-react-original', name: 'React'},
+        {icon: 'devicon-html5-plain', name: 'HTMl', delay: '100'},
+        {icon: 'devicon-css3-plain', name: 'CSS', delay: '200'},
+        {icon: 'devicon-javascript-plain', name: 'JavaScript', delay: '300'},
+        {icon: 'devicon-typescript-plain', name: 'TypeScript', delay: '400'},
+        {icon: 'devicon-react-original', name: 'React', delay: '500'},
     ]
 
     const stacksAll = [
-        {icon: 'devicon-html5-plain', name: 'HTMl'},
-        {icon: 'devicon-css3-plain', name: 'CSS'},
-        {icon: 'devicon-javascript-plain', name: 'JavaScript'},
-        {icon: 'devicon-typescript-plain', name: 'TypeScript'},
-        {icon: 'devicon-react-original', name: 'React'},
-        {icon: 'devicon-mysql-original', name: 'MySQL'},
-        {icon: 'devicon-java-plain', name: 'Java'},
+        {icon: 'devicon-html5-plain', name: 'HTMl', delay: '100'},
+        {icon: 'devicon-css3-plain', name: 'CSS', delay: '200'},
+        {icon: 'devicon-javascript-plain', name: 'JavaScript', delay: '300'},
+        {icon: 'devicon-typescript-plain', name: 'TypeScript', delay: '400'},
+        {icon: 'devicon-react-original', name: 'React', delay: '500'},
+        {icon: 'devicon-mysql-original', name: 'MySQL', delay: '600'},
+        {icon: 'devicon-java-plain', name: 'Java', delay: '700'},
     ]
 
     const [isShow, setIsShow] = useState(false);
@@ -42,7 +42,7 @@ export const TechStack = () => {
                 <div className="skills">
                     {
                         currentShow.map((stack) => (
-                            <div className="skill-item" data-aos="fade" data-aos-delay="300" data-aos-duration="2000">
+                            <div className="skill-item" data-aos="fade" data-aos-delay={stack.delay} data-aos-duration="2000">
                                 <i className={stack.icon}></i>
                                 <h3>{stack.name}</h3>
                             </div>

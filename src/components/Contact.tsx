@@ -45,12 +45,14 @@ export const Contact: React.FC<ContactProps> = ({ user }) => {
             />
             <input type="email" placeholder="Your Email" name="email" required />
             <textarea rows={5} placeholder="Your Message" name="message" required />
-            <ReCAPTCHA sitekey="6LfjVbkqAAAAAPUajzZE-Tim0XuJy_onbRU9h143"
-            onChange={(val) => setCapVal(val)}
-            />
+            <div className='recaptcha'>
+              <ReCAPTCHA sitekey="6LfjVbkqAAAAAPUajzZE-Tim0XuJy_onbRU9h143"
+              onChange={(val) => setCapVal(val)}
+              />
+            </div>
             <button 
               data-aos="fade" 
-              data-aos-delay="2500" 
+              data-aos-delay="1000" 
               data-aos-duration="1000" 
               type="submit" 
               disabled={isSending || !capVal}

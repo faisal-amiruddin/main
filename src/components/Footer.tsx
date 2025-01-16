@@ -5,7 +5,7 @@ export const Footer = () => {
         <>
             <section className='footer-container'>
                 <footer>
-                    <p>&copy; 2025 Faisal Amiruddin. Crafted with ❤️ and code.</p>
+                    <p>&copy; 2025 Faisal Amiruddin.</p>
                 </footer>
             </section>
         </>
