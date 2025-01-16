@@ -7,7 +7,7 @@ interface ContactProps {
 }
 
 export const Contact: React.FC<ContactProps> = ({ user }) => {
-  const apiKey = import.meta.env.VITE_EMAIL_API_KEY;
+  const DISCORD_WEBHOOK = "https://discord.com/api/webhooks/1329409864308621364/GK4e08_XsQTVDPzzzUyKdWsxVl5PXARzLNyzlABiKXmmFAU2aj2sdT_FOBu3p7eAm320";
   const [showSuccess, setShowSuccess] = useState(false);
   const [showFailed, setShowFailed] = useState(false);
   const [isSending, setIsSending] = useState(false);
@@ -77,41 +77,66 @@ export const Contact: React.FC<ContactProps> = ({ user }) => {
   const onSend = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     
-    // Reset states before starting new submission
     setShowSuccess(false);
     setShowFailed(false);
     setIsSending(true);
     
     try {
       const formData = new FormData(event.currentTarget);
-      formData.append("access_key", apiKey);
-      formData.append("g-recaptcha-response", capVal || '');
+      const name = formData.get('name');
+      const email = formData.get('email');
+      const message = formData.get('message');
 
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const payload = {
+        embeds: [{
+          title: "New Contact Form Submission",
+          color: 5814783, 
+          fields: [
+            {
+              name: "Name",
+              value: name || "Not provided",
+              inline: true
+            },
+            {
+              name: "Email",
+              value: email || "Not provided",
+              inline: true
+            },
+            {
+              name: "Message",
+              value: message || "No message",
+              inline: false
+            },
+            {
+              name: "Sent At",
+              value: new Date().toLocaleString(),
+              inline: false
+            }
+          ],
+          footer: {
+            text: "Contact Form Bot"
+          }
+        }]
+      };
+
+      const response = await fetch(DISCORD_WEBHOOK, {
         method: "POST",
         headers: {
-          "Accept": "application/json",
+          "Content-Type": "application/json",
         },
-        body: formData
+        body: JSON.stringify(payload)
       });
 
-      // Check if the response is ok (status in the range 200-299)
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      const data = await response.json();
-
-      if (data.success) {
-        setShowSuccess(true);
-        event.currentTarget.reset();
-        setCapVal(null);
-      } else {
-        throw new Error(data.message || 'Submission failed');
-      }
+      setShowSuccess(true);
+      event.currentTarget.reset();
+      setCapVal(null);
     } catch (err) {
       console.error("Error:", err);
-      setShowFailed(true);  // This should now work correctly
+      setShowFailed(true);
     } finally {
       setIsSending(false);
     }
