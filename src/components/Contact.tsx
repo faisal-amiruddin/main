@@ -9,6 +9,7 @@ interface ContactProps {
 export const Contact: React.FC<ContactProps> = ({ user }) => {
   const apiKey = import.meta.env.VITE_EMAIL_API_KEY;
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showFailed, setShowFailed] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [userInput, setUserInput] = useState(user);
   const [capVal, setCapVal] = useState<string | null>(null);
@@ -18,7 +19,8 @@ export const Contact: React.FC<ContactProps> = ({ user }) => {
   };
 
   const handleBack = () => {
-    setShowSuccess(false); 
+    setShowSuccess(false);
+    setShowFailed(false);
   }
 
   const renderSuccess = () => {
@@ -29,6 +31,16 @@ export const Contact: React.FC<ContactProps> = ({ user }) => {
             <p style={{color: "#888", cursor: "pointer"}} onClick={handleBack}>Back</p>
         </div> 
     )
+  }
+
+  const renderFailed = () => {
+    return (
+      <div className="failed-message">
+          <i className="fas fa-times-circle"></i>
+          <p>Message failed to send, please try again later!</p>
+          <p style={{color: "#888", cursor: "pointer"}} onClick={handleBack}>Back</p>
+      </div> 
+  )
   }
 
   const renderDefault = () => {
@@ -89,6 +101,8 @@ export const Contact: React.FC<ContactProps> = ({ user }) => {
       }
     } catch (err) {
       console.error("Error:", err);
+      setShowFailed(true);
+      event.currentTarget.reset();
     } finally {
       setIsSending(false);
     }
@@ -116,7 +130,7 @@ export const Contact: React.FC<ContactProps> = ({ user }) => {
               </div>
           </div>
           <form onSubmit={onSend} className="form-input" data-aos="fade-up" data-aos-delay="500" data-aos-duration="2000">
-              {showSuccess ? renderSuccess() : renderDefault()}
+            {showSuccess ? renderSuccess() : showFailed ? renderFailed() : renderDefault()}
           </form>
         </section>
     </>

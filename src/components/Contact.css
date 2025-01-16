@@ -82,7 +82,9 @@
 }
 
 .form-input button:hover {
-    /* scale: 0.9; */
+    background-color: transparent;
+    border: 2px solid white;
+    color: #fff;
 }
 
 .success-message {
@@ -105,6 +107,28 @@
   font-size: 1.2rem;
   color: #4CAF50;
 }
+
+.failed-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  margin-top: 50px;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.failed-message i {
+  font-size: 4rem;
+  color: #D32F2F;
+  margin-bottom: 1rem;
+}
+
+.failed-message p {
+  font-size: 1.2rem;
+  color: #D32F2F;
+}
+
 
 @keyframes fadeIn {
   from {
@@ -136,7 +160,7 @@
     cursor: not-allowed;
     color: rgb(255, 56, 56);
     background-color: transparent;
-    border: 1px solid white;
+    border: 2px solid white;
 }
 
 .recaptcha {
