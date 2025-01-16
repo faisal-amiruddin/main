@@ -77,6 +77,7 @@ export const Contact: React.FC<ContactProps> = ({ user }) => {
   const onSend = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     
+    // Reset states before starting new submission
     setShowSuccess(false);
     setShowFailed(false);
     setIsSending(true);
@@ -94,6 +95,7 @@ export const Contact: React.FC<ContactProps> = ({ user }) => {
         body: formData
       });
 
+      // Check if the response is ok (status in the range 200-299)
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -109,7 +111,7 @@ export const Contact: React.FC<ContactProps> = ({ user }) => {
       }
     } catch (err) {
       console.error("Error:", err);
-      setShowFailed(true); 
+      setShowFailed(true);  // This should now work correctly
     } finally {
       setIsSending(false);
     }
