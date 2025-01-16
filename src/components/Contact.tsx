@@ -1,5 +1,6 @@
 import { FormEvent, useState } from 'react';
 import './Contact.css';
+import ReCAPTCHA from 'react-google-recaptcha';
  
 interface ContactProps {
     user: string;
@@ -10,13 +11,14 @@ export const Contact: React.FC<ContactProps> = ({ user }) => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [userInput, setUserInput] = useState(user);
+  const [capVal, setCapVal] = useState<string | null>(null);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserInput(event.target.value);
   };
 
   const handleBack = () => {
-    setShowSuccess(false); // Diubah ke false
+    setShowSuccess(false); 
   }
 
   const renderSuccess = () => {
@@ -43,12 +45,15 @@ export const Contact: React.FC<ContactProps> = ({ user }) => {
             />
             <input type="email" placeholder="Your Email" name="email" required />
             <textarea rows={5} placeholder="Your Message" name="message" required />
+            <ReCAPTCHA sitekey="6LfjVbkqAAAAAPUajzZE-Tim0XuJy_onbRU9h143"
+            onChange={(val) => setCapVal(val)}
+            />
             <button 
               data-aos="fade" 
               data-aos-delay="2500" 
               data-aos-duration="1000" 
               type="submit" 
-              disabled={isSending}
+              disabled={isSending || !capVal}
             >
               {isSending ? 'Sending...' : 'Send Message'}
             </button>
