@@ -40,15 +40,13 @@ export const Contact: React.FC<ContactProps> = ({ user }) => {
           <p>Message failed to send, please try again later!</p>
           <p style={{color: "#888", cursor: "pointer"}} onClick={handleBack}>Back</p>
       </div> 
-  )
+    )
   }
 
   const renderDefault = () => {
     return (
         <>
-            <input type="hidden" name="access_key" value={apiKey} />
-            <input 
-              type="text" 
+            <input type="text" 
               placeholder="Your Name" 
               name="name" 
               required 
@@ -58,8 +56,9 @@ export const Contact: React.FC<ContactProps> = ({ user }) => {
             <input type="email" placeholder="Your Email" name="email" required />
             <textarea rows={5} placeholder="Your Message" name="message" required />
             <div className='recaptcha'>
-              <ReCAPTCHA sitekey="6LfjVbkqAAAAAPUajzZE-Tim0XuJy_onbRU9h143"
-              onChange={(val) => setCapVal(val)}
+              <ReCAPTCHA 
+                sitekey="6LfjVbkqAAAAAPUajzZE-Tim0XuJy_onbRU9h143"
+                onChange={(val) => setCapVal(val)}
               />
             </div>
             <button 
@@ -77,32 +76,40 @@ export const Contact: React.FC<ContactProps> = ({ user }) => {
 
   const onSend = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    
+    setShowSuccess(false);
+    setShowFailed(false);
     setIsSending(true);
-    const formData = new FormData(event.currentTarget);
-
-    formData.append("access_key", apiKey);
-
-    const object = Object.fromEntries(formData);
-    const json = JSON.stringify(object);
-
+    
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const formData = new FormData(event.currentTarget);
+      formData.append("access_key", apiKey);
+      formData.append("g-recaptcha-response", capVal || '');
+
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json"
+          "Accept": "application/json",
         },
-        body: json
-      }).then((res) => res.json());
+        body: formData
+      });
 
-      if (res.success) {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+
+      if (data.success) {
         setShowSuccess(true);
         event.currentTarget.reset();
+        setCapVal(null);
+      } else {
+        throw new Error(data.message || 'Submission failed');
       }
     } catch (err) {
       console.error("Error:", err);
-      setShowFailed(true);
-      event.currentTarget.reset();
+      setShowFailed(true); 
     } finally {
       setIsSending(false);
     }
