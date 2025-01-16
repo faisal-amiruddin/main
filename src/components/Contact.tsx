@@ -12,15 +12,20 @@ export const Contact: React.FC<ContactProps> = ({ user }) => {
   const [showFailed, setShowFailed] = useState(false);
   const [isSending, setIsSending] = useState(false);
   const [userInput, setUserInput] = useState(user);
-  const [capVal, setCapVal] = useState<string | null>(null);
+  const [capVal, setCapVal] = useState(false);
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUserInput(event.target.value);
   };
 
+  const handeCaptchaValue = () => {
+    setCapVal(true);
+  }
+
   const handleBack = () => {
     setShowSuccess(false);
     setShowFailed(false);
+    setCapVal(false);
   }
 
   const renderSuccess = () => {
@@ -58,7 +63,7 @@ export const Contact: React.FC<ContactProps> = ({ user }) => {
             <div className='recaptcha'>
               <ReCAPTCHA 
                 sitekey="6LfjVbkqAAAAAPUajzZE-Tim0XuJy_onbRU9h143"
-                onChange={(val) => setCapVal(val)}
+                onChange={handeCaptchaValue}
               />
             </div>
             <button 
@@ -66,7 +71,7 @@ export const Contact: React.FC<ContactProps> = ({ user }) => {
               data-aos-delay="1000" 
               data-aos-duration="1000" 
               type="submit" 
-              disabled={isSending || !capVal}
+              disabled={isSending || capVal}
             >
               {isSending ? 'Sending...' : 'Send Message'}
             </button>
@@ -133,7 +138,6 @@ export const Contact: React.FC<ContactProps> = ({ user }) => {
 
       setShowSuccess(true);
       event.currentTarget.reset();
-      setCapVal(null);
     } catch (err) {
       console.error("Error:", err);
       setShowFailed(true);
