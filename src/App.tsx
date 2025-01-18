@@ -7,6 +7,7 @@ import { TechStack } from './components/TechStack.tsx';
 import { Footer } from './components/Footer.tsx';
 import { Nav } from './components/Nav.tsx';
 import { Contact } from './components/Contact.tsx';
+import { Certif } from './components/Certif.tsx';
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
       <Hero user={user} />
       <About />
       <TechStack />
+      <Certif />
       <Contact user={user} />
       <Footer />
     </>

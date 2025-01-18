@@ -50,6 +50,14 @@ export const Nav = () => {
         setIsMenuOpen(false);
     };
 
+    const scrollToCertif = () => {
+        const aboutSection = document.querySelector('.certif-scroll') as HTMLElement;
+        if (aboutSection) {
+            aboutSection.scrollIntoView({ behavior: 'smooth' });
+        }
+        setIsMenuOpen(false);
+    };
+
     const scrollToContact = () => {
         const aboutSection = document.querySelector('.contact-scroll') as HTMLElement;
         if (aboutSection) {
@@ -69,7 +77,7 @@ export const Nav = () => {
                         <a onClick={scrollToHero}>Home</a>
                         <a onClick={scrollToAbout}>About</a>
                         <a onClick={scrollToTech}>Tech Stack</a>
-                        <a href="#">Certificates</a>
+                        <a onClick={scrollToCertif}>Certificates</a>
                         <a onClick={scrollToContact}>Contact</a>
                     </div>
                 </div>

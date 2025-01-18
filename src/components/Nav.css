@@ -51,7 +51,6 @@ a, button {
 
 .menu-links a:hover {
     border: 2px solid #fff;
-    scale: 0.9;
 }
 
 @media (max-width: 768px) {

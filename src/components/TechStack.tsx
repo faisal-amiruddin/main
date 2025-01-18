@@ -49,11 +49,11 @@ export const TechStack = () => {
                         ))
                     }
                 </div>
-                <div className='load' data-aos="fade-up" data-aos-delay="300" data-aos-duration="2000" onClick={handleShow}>
+                <div className='load-skills' data-aos="fade-up" data-aos-delay="300" data-aos-duration="2000" onClick={handleShow}>
                     {
                         isShow? (<p>Show Less</p>): (<p>Show More</p>)
                     }
-                    <i className='load-indicator fas fa-chevron-down'></i>
+                    <i className='load-indicator-skills fas fa-chevron-down'></i>
                 </div>
             </section>
         </>
