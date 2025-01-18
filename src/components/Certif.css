@@ -19,7 +19,7 @@
 .certif-item {
     position: relative;
     background: rgba(255, 255, 255, 0.05);
-    padding: 10px;
+    border: 15px solid rgba(255, 255, 255, 0.05);
     border-radius: 4px;
     width: 400px;
     transition: 0.3s ease-in-out;
